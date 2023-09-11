@@ -60,7 +60,50 @@
         );
       }
       function KmToMiles() {
-        return <h3>KM 2 M</h3>;
+        const [amount, setAmount] = React.useState(0);
+        //state 변수와 state변수의 상태를 바꿔줄 수 있는 함수가 배열 형태로 =  React.useState("초기값")
+        const [flipped, setFlipped] = React.useState(false);
+
+        const onChange = (e) => {
+          console.log(e.target.value);
+          setAmount(e.target.value);
+        };
+        // setAmount의 이벤트가 발생한 값을 콘솔로그로 관찰,얻기
+
+        const reset = () => setAmount(0);
+        const onFlip = () => {
+          reset();
+          setFlipped((current) => !current);
+        };
+
+        return (
+          <div>
+            <div>
+              <label htmlFor="kilometers">Km</label>
+              <input
+                value={flipped ? amount * 1.609344 : amount}
+                id="kilometers"
+                placeholder="Kilometers"
+                type="number"
+                onChange={onChange}
+                disabled={flipped}
+              ></input>
+            </div>
+            <div>
+              <lable htmlFor="miles">Miles</lable>
+              <input
+                value={flipped ? amount : amount * 0.62137}
+                id="miles"
+                placeholder="Miles"
+                type="number"
+                disabled={!flipped}
+                onChange={onChange}
+              ></input>
+            </div>
+            <button onClick={reset}>Reset</button>
+            <button onClick={onFlip}>Flip</button>
+          </div>
+        );
       }
       function App() {
         const [index, setIndex] = React.useState("xx");
