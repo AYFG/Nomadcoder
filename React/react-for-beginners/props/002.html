@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin=""
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin=""
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>useState</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      function Btn({ text, changeValue }) {
+        console.log(text, "was render");
+        return (
+          <button
+            //   onClick={} , 여기에 onClick이 들어가면 eventListener
+            onClick={changeValue}
+            style={{
+              backgroundColor: "tomato",
+              color: "white",
+              padding: "10px 20px",
+              border: 0,
+              borderRadius: 10,
+              cursor: "pointer",
+            }}
+          >
+            {text}
+          </button>
+        );
+      }
+
+      function App() {
+        const [value, setValue] = React.useState("Save Changes");
+        const changeValue = () => setValue("Revert Changes");
+        // 부모 컴포넌트는 state 변경을 겪고 상태가 변경될 때 return 안의 모든 것이 새로 렌더링 된다.
+        return (
+          <div>
+            {/*onclick을 여기 커스텀 컴포넌트에 넣는 것은 prop  , 항상 수동으로 prop을 적어줘야한다*/}
+            <Btn text={value} changeValue={changeValue} />
+            <Btn text="Continue" />
+          </div>
+        );
+      }
+      const root = document.getElementById("root");
+      ReactDOM.render(<App />, root);
+    </script>
+  </body>
+</html>

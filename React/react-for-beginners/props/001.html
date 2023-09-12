@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin=""
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin=""
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>useState</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      //props는 첫 번째이자 Btn이 전달받는 유일한 인자 객체
+      //   function Btn(props) {
+
+      // props의 shortcut, 중괄호 열고 이름 그대로 받아오기
+      //   function Btn({ banana }) {
+      function Btn({ banana, big }) {
+        console.log(banana, big);
+        // console.log(props);
+        return (
+          <button
+            style={{
+              backgroundColor: "tomato",
+              color: "white",
+              padding: "10px 20px",
+              border: 0,
+              borderRadius: 10,
+
+              //  shortcut을 이용한 삼항연산자
+              fontSize: big ? 18 : 12,
+            }}
+          >
+            {/*{props.banana}*/}
+
+            {/*shortcut*/}
+            {banana}
+          </button>
+        );
+      }
+
+      function App() {
+        return (
+          <div>
+            {/*Btn({banana:"save changes"})*/}
+            <Btn banana="Save Changes" big={true} />
+            {/*Btn({banana:"Continue"})*/}
+            <Btn banana="Continue" big={false} />
+          </div>
+        );
+      }
+      const root = document.getElementById("root");
+      ReactDOM.render(<App />, root);
+    </script>
+  </body>
+</html>

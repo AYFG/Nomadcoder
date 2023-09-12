@@ -71,11 +71,13 @@
         // setAmount의 이벤트가 발생한 값을 콘솔로그로 관찰,얻기
 
         const reset = () => setAmount(0);
+        // reset btn에게 onClick 이벤트를 주기위한 reset함수 .setState를 0으로 준다
+
         const onFlip = () => {
           reset();
-          setFlipped((current) => !current);
+          setFlipped((a) => !a);
         };
-
+        // Flit btn onclick event ,단위를 뒤집어 변환하기 위한 onFlip함수 , input의 값을 초기화 시켜주고
         return (
           <div>
             <div>
