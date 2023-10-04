@@ -4,7 +4,10 @@ const toDoList = document.getElementById("todo-list");
 
 const TODOS_KEY = "todos";
 
-const toDos = [];
+// const toDos = [];
+
+//localStorage에 toDo들이 있으면toDos에 parsedTodos를 넣어서 전에 있던 todo들을 복원하기 위해 toDos = parseToDos
+let toDos = [];
 
 function saveToDos() {
   // localStorage.setItem("todos", toDos); // 로컬스토리지에 텍스트로 저장
@@ -61,10 +64,13 @@ const savedToDos = localStorage.getItem(TODOS_KEY);
 // console.log(savedToDos); // 배열로 저장됨
 if (savedToDos !== null) {
   const parsedToDos = JSON.parse(savedToDos);
-  console.log(parsedToDos);
+
+  toDos = parsedToDos;
+  // console.log(parsedToDos);
   // console.log(parsedToDos); // 객체로 저장됨
   // parsedToDos.forEach(sayHello); // value의 개수만큼 hello를 출력해주는 forEach ,  모든 value를 알려주는 forEach
-  parsedToDos.forEach(sayHello);
-  parsedToDos.forEach((e) => console.log("this is the turn of", e));
+  // parsedToDos.forEach(sayHello);
+  // parsedToDos.forEach((e) => console.log("this is the turn of", e));
   // arrow function 결과는 같음
+  parsedToDos.forEach(paintTodo);
 }
