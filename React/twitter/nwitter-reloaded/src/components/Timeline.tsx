@@ -8,8 +8,8 @@ import {
 import styled from "styled-components";
 import { db } from "../Firebase.client";
 import { useState, useEffect } from "react";
-import Tweets from "./Tweet";
 import Tweet from "./Tweet";
+import { Unsubscribe } from "firebase/auth";
 export interface ITweet {
   id: string;
   photo: string;
@@ -22,6 +22,7 @@ const Wrapper = styled.div`
   display: flex;
   gap: 10px;
   flex-direction: column;
+  overflow-y: scroll;
 `;
 export default function Timeline() {
   const [tweets, setTweet] = useState<ITweet[]>([]);
@@ -32,19 +33,8 @@ export default function Timeline() {
         collection(db, "tweets"),
         orderBy("createdAt", "desc")
       );
-      // const snapShot = await getDocs(tweetsQuery);
-      // const tweets = snapShot.docs.map((doc) => {
-      //   const { tweet, createdAt, userId, username, photo } = doc.data();
-      //   return {
-      //     tweet,
-      //     createdAt,
-      //     userId,
-      //     username,
-      //     photo,
-      //     id: doc.id,
-      //   };
-      // });
-      unSubscribe = await onSnapshot(tweetsQuery, (snapshot) => {
+
+      unsubScribe = await onSnapshot(tweetsQuery, (snapshot) => {
         const tweets = snapshot.docs.map((doc) => {
           const { tweet, createdAt, userId, username, photo } = doc.data();
           return {

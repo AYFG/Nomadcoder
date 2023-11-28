@@ -10,7 +10,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import LoadingScreen from "./components/Loading-screnn";
 import { auth } from "./Firebase.client";
-import ProtectedRoute from "./components/protected-route";
+import ProtectedRoute from "./components/Protected-route";
 
 const router = createBrowserRouter([
   {
