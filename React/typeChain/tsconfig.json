@@ -2,6 +2,8 @@
   "include": ["src"],
   "compilerOptions": {
     "outDir": "build",
-    "target": "ES6"
+    "target": "ES6",
+    "lib": ["ES6", "DOM"]
+    // lib : 타입스크립트에게 코드가 어디서 실행될 지를 알려준다.(타겟 런타임 환경)
   }
 }
