@@ -1,9 +1,9 @@
-class Block {
-  constructor(private data: string) {}
-  static Hello() {
-    return "hi";
-  }
-}
-// localStorage.getItem()
-// Math.fround()
-// lib에 DOM을 넣어 코드가 어디서 실행될지 알려주면 자동실행,설명을 제공해준다.
+import { init, exit } from "myPackage";
+
+init({
+  url: "true",
+});
+exit(1);
+
+// 타입스크립트가 localStorage를 아는 방식
+// localStorage.clear() ctrl을 눌러 들어가면 타입스크립트가 lib.dom.d.ts의 주석을 읽어준다.
